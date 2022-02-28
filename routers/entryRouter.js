@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router()
 import entryController from "../controllers/entryController.js"
-import authMiddleWare from "../middleware/authmiddleware.js"
+import authMiddleWare from "../middleware/authMiddleWare.js"
 
 router.get("/entry", entryController.getEntries)
 router.get("/entry/:id", entryController.getEntryById)
