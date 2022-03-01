@@ -15,7 +15,7 @@ const signUp = async (req, res) => {
         const userNameExist = await User.findOne({ userName })
         if (userNameExist) return res.status(400).json({ message: "This user name has already been taken" })
 
-        if (password !== confirmPassword) return res.status(400).json({ message: "Confirmation of password is failed" })
+        if (password !== confirmPassword) return res.status(400).json({ message: "Password can't be confirmed" })
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -69,7 +69,7 @@ const signIn = async (req, res) => {
         if (!user) return res.status(404).json({ message: "User not found" })
 
         const comparePassword = await bcrypt.compare(password, user.password)
-        if (!comparePassword) return res.status(404).json({ message: "Check your inputs" })
+        if (!comparePassword) return res.status(404).json({ message: "Check your password" })
 
         const accessToken = jwt.sign(
             {
