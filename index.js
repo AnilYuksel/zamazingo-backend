@@ -10,8 +10,7 @@ dotenv.config()
 const app = express()
 
 app.use(express.json({ limit: "20mb" }))
-// app.use(cors({ credentials: true, origin: "https://zamazingo.netlify.app" }))
-app.use(cors({credentials:true, origin: "http://localhost:3000"}))
+app.use(cors({ credentials: true, origin: "https://zamazingo.netlify.app" }))
 app.use(cookieParser())
 app.use("/", router)
 
